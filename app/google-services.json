@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "13779786550",
+    "project_id": "todolist-4a77e",
+    "storage_bucket": "todolist-4a77e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13779786550:android:a84bdc5c64aaa18134b197",
+        "android_client_info": {
+          "package_name": "edu.uark.ahnelson.assignment2solution2024"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwHNZZ-1FeRvhWQByFTVtWmjaXTXi0NSw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Assignment2Solution</string>
+    <string name="channel_name">ToDoList Notification Channel</string>
+    <string name="channel_description">ToDoList primary notification channel for notifying of upcoming due dates</string>
+    <string name="add_word">Add a ToDoItem</string>
+    <string name="title">Title</string>
+    <string name="done">Done?</string>
+    <string name="todo_description">ToDo Description...</string>
+    <string name="due_date">10/8/2022 11:59 PM</string>
+    <string name="DueDescriptor">Due Date</string>
+    <string name="save_to_do_item">Save To Do Item</string>
+    <string name="delete_to_do_item">Delete To Do Item</string>
+</resources>
