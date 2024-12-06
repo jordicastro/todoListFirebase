@@ -10,14 +10,19 @@ import kotlinx.coroutines.flow.Flow
 
 class ToDoListRepository(private val toDoListDao: ToDoListDao) {
     val allToDoItems: Flow<Map<Int, ToDoItem>> = toDoListDao.getToDoItems()
-    var firestoreDatasource:ToDoListFirestoreDatasource = ToDoListFirestoreDatasource(this)
+    var firestoreDatasource: ToDoListFirestoreDatasource = ToDoListFirestoreDatasource(this)
 
-    fun setCollection(collection:String){
+    fun setCollection(collection: String) {
         firestoreDatasource.setCollection(collection)
     }
+
+    fun start() {
+        firestoreDatasource.start()
+    }
+
     @Suppress("RedudndantSuspendModifier")
     @WorkerThread
-    suspend fun insert(toDoItem: ToDoItem){
+    suspend fun insert(toDoItem: ToDoItem) {
         val id: Long = toDoListDao.insert(toDoItem) // insert into local database
         toDoItem.id = id.toInt()
         firestoreDatasource.insert(toDoItem) // insert into firestore
@@ -31,11 +36,11 @@ class ToDoListRepository(private val toDoListDao: ToDoListDao) {
 
     @Suppress("RedudndantSuspendModifier")
     @WorkerThread
-    suspend fun updateCompleted(toDoId: Int, completed:Boolean) {
+    suspend fun updateCompleted(toDoId: Int, completed: Boolean) {
         if (completed)
-            toDoListDao.updateCompleted(toDoId,1)
+            toDoListDao.updateCompleted(toDoId, 1)
         else
-            toDoListDao.updateCompleted(toDoId,0)
+            toDoListDao.updateCompleted(toDoId, 0)
     }
 
     @Suppress("RedudndantSuspendModifier")
@@ -52,5 +57,4 @@ class ToDoListRepository(private val toDoListDao: ToDoListDao) {
         toDoListDao.updateItem(toDoItem)
         firestoreDatasource.update(toDoItem)
     }
-
 }

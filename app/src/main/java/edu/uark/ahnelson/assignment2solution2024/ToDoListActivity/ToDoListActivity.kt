@@ -12,6 +12,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -25,6 +26,8 @@ import edu.uark.ahnelson.assignment2solution2024.Repository.ToDoItem
 import edu.uark.ahnelson.assignment2solution2024.ToDoListApplication
 import edu.uark.ahnelson.assignment2solution2024.Util.NotificationUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import edu.uark.ahnelson.assignment2solution2024.Authentication.LoginActivity
 import edu.uark.ahnelson.assignment2solution2024.R
 import java.util.*
 
@@ -86,6 +89,19 @@ class ToDoListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_to_do_list)
         checkNotificationPrivilege()
         NotificationUtils().createNotificationChannel(applicationContext)
+
+        val userId = intent.getStringExtra("USER_ID")
+        Log.d("ToDoListActivity", "ToDoListActivity: User ID: $userId")
+        // set the collection to the user's todoItems
+//        toDoListViewModel.start()
+        toDoListViewModel.setCollection("todoItems")
+
+        findViewById<Button>(R.id.btnLogout).setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)

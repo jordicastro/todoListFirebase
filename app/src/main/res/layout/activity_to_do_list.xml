@@ -31,5 +31,26 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Log out"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:textColor="@android:color/black"
+        android:background="@color/cardview_dark_background"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="16dp"
+        android:elevation="6dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:stateListAnimator="@null"
+        android:shape="oval" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

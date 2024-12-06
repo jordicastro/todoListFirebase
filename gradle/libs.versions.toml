@@ -21,6 +21,7 @@ roomRuntime = "2.5.2"
 rules = "1.6.1"
 googleGmsGoogleServices = "4.4.2"
 firebaseFirestore = "25.1.1"
+firebaseAuth = "23.1.0"
 
 [libraries]
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
@@ -48,6 +49,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 material-v190 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 androidx-rules = { group = "androidx.test", name = "rules", version.ref = "rules" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
