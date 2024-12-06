@@ -85,6 +85,7 @@ class ToDoListActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        toDoListViewModel.clearToDoItems()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_to_do_list)
         checkNotificationPrivilege()
@@ -93,10 +94,10 @@ class ToDoListActivity : AppCompatActivity() {
         val userId = intent.getStringExtra("USER_ID")
         Log.d("ToDoListActivity", "ToDoListActivity: User ID: $userId")
         // set the collection to the user's todoItems
-//        toDoListViewModel.start()
         toDoListViewModel.setCollection("todoItems")
 
         findViewById<Button>(R.id.btnLogout).setOnClickListener {
+            toDoListViewModel.clearToDoItems()
             FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)

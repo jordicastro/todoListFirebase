@@ -10,9 +10,9 @@ import kotlinx.coroutines.launch
 
 class ToDoListViewModel(private val repository: ToDoListRepository): ViewModel() {
 
-    init {
-        repository.setCollection("todoItems")
-    }
+//    init {
+//        repository.setCollection("todoItems")
+//    }
     fun updateChecked(itemId: Int, checked: Boolean) {
         viewModelScope.launch {
             repository.updateCompleted(itemId, checked)
@@ -23,9 +23,12 @@ class ToDoListViewModel(private val repository: ToDoListRepository): ViewModel()
         repository.setCollection(collection)
     }
 
-    fun start() {
-        repository.start()
+    fun clearToDoItems(){
+        viewModelScope.launch {
+            repository.clearToDoItems()
+        }
     }
+
 
     val allToDoItems: LiveData<Map<Int, ToDoItem>> = repository.allToDoItems.asLiveData()
 

@@ -14,20 +14,7 @@ class ToDoListFirestoreDatasource(val repository: ToDoListRepository) {
     val db = Firebase.firestore
     lateinit var collectionReference:CollectionReference
 
-    fun start () {
-        auth = Firebase.auth
-
-        val currUser = auth.currentUser
-
-        if (currUser != null) {
-            val userCollection = db.collection("users")
-            val todoItemsCollection = userCollection.document(currUser.uid).collection("todoItems")
-
-        }
-
-    }
-
-    fun setCollection(collection:String){
+    fun setCollection(collection:String): CollectionReference {
         auth = Firebase.auth
         Log.d("FirestoreDatasource", "USERID: ${auth.currentUser?.uid}")
         collectionReference = db.collection("users").document(auth.currentUser?.uid.toString()).collection(collection)
@@ -46,7 +33,9 @@ class ToDoListFirestoreDatasource(val repository: ToDoListRepository) {
 
             }
         }
+        return collectionReference
     }
+
 
     fun insert(toDoItem: ToDoItem){
         collectionReference.document(toDoItem.id.toString()).set(toDoItem)
